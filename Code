@@ -3,3 +3,71 @@ sajad
 yacine
 mo
 Hüda der Baba
+
+
+# Es werden 2 Dateien gebraucht: Client und Server
+# Diese schicken sich gegenseitig Daten 
+
+# CLIENT
+
+# Socket importieren
+import socket
+
+# Client Socket erstellen
+# socket.socket, um ein Socket aufzubauen
+# 2 Parameter werden übergeben
+# 1. Parameter: Wir benutzen die Protokollfamilie AF_INET, um ins Internet zu gelangen
+# Wir öffnen sozugaen ein Stream über das Netzwerkprotokoll AF_INET und mit SOCK_STREAM geben wir die Protokollart an
+client_socket = socket.socket(socket.AF_INET,
+                              socket.SOCK_STREAM)
+# Verbindung mit dem Empfänger herstellen
+# Da wir uns mit unserem lokalen PC verbinden wollen benutzen wir die IP Adresse 127.0.0.1
+# 1337 ist der Port (kann man sich selber aussuchen)
+server_addr = ('127.0.0.1', 1337)
+client_socket.connect(server_addr)
+
+# Daten senden
+# Wir müssen mit Bytes arbeiten, da wir Strings schicken
+# utf8 ist die Codierung dafür, dass alles was wir als String reinschreiben, übermiitelt wird
+client_socket.send(bytes("Hi", "utf8") )
+client_socket.close()
+
+
+
+
+# SERVER
+# Der Server läuft als ein separates Programm
+
+# Socket importieren
+import socket
+import socket
+
+# Server Socket erstellen
+# socket.socket, um ein Socket aufzubauen
+# 2 Parameter werden übergeben
+# 1. Parameter: Wir benutzen die Protokollfamilie AF_INET, um ins Internet zu gelangen
+# Wir öffnen sozugaen ein Stream über das Netzwerkprotokoll AF_INET und mit SOCK_STREAM geben wir die Protokollart an
+server_socket = socket.socket(socket.AF_INET,
+                              socket.SOCK_STREAM)
+
+# Wir binden den Server Socket, d.h. wir sagen ihm, er soll auf einen bestimmten Port die ganze Zeit abhören
+# Es ist wichtig, dass wir hier den gleichen Port nehmen
+server_socket.bind(('127.0.0.1', 1337))
+
+# Server beginnt zu "hören"
+# Die Zahl 1 ist backlog: Legt die Anzahl von Clients fest, die sich gleichzeitig mit unserem Server verbinden können
+server_socket.listen(1)
+
+# While Schleife, damit wir durchgehend Verbindungen akzeptieren können
+while True:
+    #  Verbindungen akzeptieren, die von außen reinkommen
+    (client_socket, addr)= server_socket.accept()
+
+    # Daten empfangen
+    # 1024 ist die Buffer Größe
+    msg = client_socket.recv(1024)
+    # Wir müssen mit Bytes arbeiten, da wir Strings erhalten
+    # utf8 ist die Codierung dafür, dass alles was wir als String bekommen, übermiitelt wird
+    print(str(msg, "utf8"))
+
+    # Wichtig: Den Server als zuerst laufen lasse, sonst kann der Client nicht connecten
