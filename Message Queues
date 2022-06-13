@@ -1,0 +1,35 @@
+#Code wird noch geupdatet
+#Interprozesskommunikation noch nicht vorhanden aber Rohbau
+#Message Queues stellen ein asynchrones Kommunikationsprotokoll bereit, indem Absender und Empfänger von Nachrichten nicht gleichzeitig mit der Nachrichten-Warteschlange interagieren 
+müssen. Das heißt, die in der Message Queue gestellten Nachrichten werden so lange gespeichert, bis der Empfänger sie abruft
+
+
+#1 Enqueue: Die enqueue-Funktion fügt ein Element am Ende der Queue ein
+#2 Dequeue: Die Funktion löscht ein Element aus der Queue. Das gelöschte Element ist dabei immer das erste in der Queue
+
+# Queue Modul dient zum Erstellen von Queues
+from queue import Queue
+
+#Def kreiert eine neue Funktion und Put fügt die Elemente zur Queue am Ende hinzu
+def enqueue(x):
+ q.put(x)
+
+#Get hingegen löscht Element hingegen
+def dequeue():
+ q.get()
+
+#Hier wird nun der Queue erzeugt und maxsize beschränkt die Größe des Queues
+#Hier könnte man mit Schleifan arbeiten die die Größe des Queues automatisch an angepasste Zahlen anpassen
+q = Queue(maxsize = 5)
+#Hier werden nun Elemente zum Queue hinzugefügt
+enqueue(1)
+enqueue(2)
+enqueue(3)
+enqueue(4)
+enqueue(5)
+q.qsize()
+#Bei Qsize wird nun die Größe des Queues ausgegeben die gleich 5 sein müsste
+#Hier werden nun 2 Elemente aus der Queue mit dequeue gelöscht dementsprechend sollte die Qsize bei 3 sein
+dequeue()
+dequeue()
+q.qsize()
