@@ -1,5 +1,5 @@
-#Dieses Modul bietet die Klasse SharedMemoryfür die Zuweisung und Verwaltung des gemeinsam genutzten Speichers, auf die ein
-oder mehrere Prozesse auf einem Multicore- oder SMP-Computer (Symmetric Multiprocessor) zugreifen können.
+#Definitionen
+# Code wird hinzugefügt
 
 #Klassemultiprocessing.shared_memory.SharedMemory(Name=Keine,create=False,Größe=0) 
 Erstellt einen neuen gemeinsam genutzten Speicherblock oder wird an einen vorhandenen gemeinsam genutzten Speicherblock angehängt.
