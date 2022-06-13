@@ -1,1 +1,20 @@
+#Dieses Modul bietet die Klasse SharedMemoryfür die Zuweisung und Verwaltung des gemeinsam genutzten Speichers, auf die ein
+oder mehrere Prozesse auf einem Multicore- oder SMP-Computer (Symmetric Multiprocessor) zugreifen können.
 
+#Klassemultiprocessing.shared_memory.SharedMemory(Name=Keine,create=False,Größe=0) 
+Erstellt einen neuen gemeinsam genutzten Speicherblock oder wird an einen vorhandenen gemeinsam genutzten Speicherblock angehängt.
+
+#close()  Wenn ein Prozess keinen Zugriff mehr auf einen gemeinsam genutzten Speicherblock benötigt, der möglicherweise noch 
+von anderen Prozessen benötigt wird, sollte die Methode aufgerufen werden.
+
+#unlink() Wenn ein gemeinsam genutzter Speicherblock von keinem Prozess mehr benötigt wird
+
+#buf  Eine Speicheransicht des Inhalts des gemeinsam genutzten Speicherblocks.
+
+#size Nur-Lese-Zugriff auf die Größe des gemeinsam genutzten Speicherblocks in Byte.
+
+#count  Gibt die Häufigkeit von value zurück.
+
+#index Gibt die erste Indexposition von value zurück. Löst #ValueErroraus, wenn #value nicht vorhanden ist.
+
+#shm  Die #SharedMemory Instanz, in der die Werte gespeichert werden.
